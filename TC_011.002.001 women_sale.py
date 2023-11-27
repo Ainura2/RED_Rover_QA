@@ -1,4 +1,3 @@
-
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
@@ -22,15 +21,3 @@ def test_women():
     women_button.click()
     assert driver.title == "Women Sale"
     driver.get_screenshot_as_file("tr.png")
-
-
-def test_right():
-    driver.get('https://magento.softwaretestingboard.com/')
-    sale_button = driver.find_element(By.XPATH, "//*[@id='store.menu']//*[text()='Sale']/parent::a")
-    action = ActionChains(driver)
-    action.key_down(Keys.CONTROL)
-    action.click(on_element=sale_button)
-    action.perform()
-    driver.switch_to.window(driver.window_handles[1])
-    assert driver.title == "Sale"
-    driver.close()
